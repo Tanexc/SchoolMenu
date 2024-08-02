@@ -1,4 +1,4 @@
-package ru.tanexc.schoolmenu.model
+package ru.tanexc.schoolmenu.domain.model
 
 import androidx.compose.ui.graphics.ImageBitmap
 

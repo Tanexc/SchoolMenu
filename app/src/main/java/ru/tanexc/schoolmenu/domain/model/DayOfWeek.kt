@@ -1,4 +1,4 @@
-package ru.tanexc.schoolmenu.model
+package ru.tanexc.schoolmenu.domain.model
 
 /**
  * enum, содержащий все дни недели и дополнительное значение

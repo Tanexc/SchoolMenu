@@ -1,4 +1,4 @@
-package ru.tanexc.schoolmenu.model
+package ru.tanexc.schoolmenu.domain.model
 
 /**
  * Модель приема пищи
@@ -6,5 +6,6 @@ package ru.tanexc.schoolmenu.model
 data class Meal(
     val id: Long,
     val dishes: List<Dish>,
+    val type: MealType,
     val cost: Float
 )
