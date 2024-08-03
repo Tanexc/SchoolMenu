@@ -20,7 +20,7 @@ interface DishDao {
     suspend fun getByTitle(title: String): List<DishEntity>
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
-    suspend fun insertDishes(data: List<DishEntity>)
+    suspend fun insertDish(data: DishEntity)
 
     @Update
     suspend fun updateDish(data: DishEntity)

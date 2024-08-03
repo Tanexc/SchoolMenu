@@ -2,6 +2,9 @@ package ru.tanexc.schoolmenu.data.local.entity.main
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import ru.tanexc.schoolmenu.core.util.toImageBitmap
+import ru.tanexc.schoolmenu.data.local.entity.DataEntity
+import ru.tanexc.schoolmenu.domain.model.Dish
 import ru.tanexc.schoolmenu.domain.model.Harm
 
 @Entity
@@ -17,7 +20,19 @@ data class DishEntity(
     val weight: Float,
     val harm: Harm,
     val cost: Float
-    ) {
+) : DataEntity {
+    override fun asDomain(): Dish = Dish(
+        dishId,
+        title,
+        image.toImageBitmap(),
+        calories,
+        protein,
+        fats,
+        carbon,
+        weight,
+        harm,
+        cost
+    )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

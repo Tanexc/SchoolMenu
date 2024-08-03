@@ -1,5 +1,7 @@
 package ru.tanexc.schoolmenu.domain.model
 
+import ru.tanexc.schoolmenu.data.local.entity.main.MenuEntity
+
 /**
  * Модель меню на день
  */
@@ -7,4 +9,9 @@ data class Menu(
     val id: Int,
     val dayOfWeek: DayOfWeek = DayOfWeek.Any,
     val meals: List<Meal>
-)
+): Domain {
+    override fun asEntity(): MenuEntity = MenuEntity(
+        id,
+        dayOfWeek
+    )
+}
