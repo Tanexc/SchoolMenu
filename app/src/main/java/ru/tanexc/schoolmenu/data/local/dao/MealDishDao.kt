@@ -10,7 +10,7 @@ import ru.tanexc.schoolmenu.data.local.entity.supportive.MealDish
 @Dao
 interface MealDishDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(data: MealDish)
+    suspend fun insert(data: List<MealDish>)
 
     @Query("delete from mealdish where mealId = :mealId")
     suspend fun deleteByMeal(mealId: Int)

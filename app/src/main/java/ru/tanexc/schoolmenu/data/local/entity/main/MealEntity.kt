@@ -10,7 +10,7 @@ import ru.tanexc.schoolmenu.domain.model.MealType
 @Entity
 data class MealEntity(
     @PrimaryKey
-    val mealId: Long,
+    val mealId: Int,
     val type: MealType,
     val cost: Float
 ): DataEntity {

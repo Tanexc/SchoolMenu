@@ -16,6 +16,9 @@ interface DishDao {
     @Query("delete from dishentity")
     suspend fun deleteAll()
 
+    @Query("delete from dishentity where dishId = :id")
+    suspend fun delete(id: Int)
+
     @Query("select * from dishentity where dishentity.title like '%' || :title || '%'")
     suspend fun getByTitle(title: String): List<DishEntity>
 

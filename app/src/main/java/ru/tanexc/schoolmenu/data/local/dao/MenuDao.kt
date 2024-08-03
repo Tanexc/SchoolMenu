@@ -12,7 +12,7 @@ import ru.tanexc.schoolmenu.domain.model.DayOfWeek
 @Dao
 interface MenuDao {
     @Query("select * from menuentity limit :limit offset :offset")
-    suspend fun getAllMenu(limit: Int, offset: Int)
+    suspend fun getAllMenu(limit: Int, offset: Int): List<MenuWithMeal>
 
     @Query("select * from menuentity where menuentity.dayOfWeek = :day")
     suspend fun getMenuByDay(day: DayOfWeek): List<MenuWithMeal>
@@ -20,9 +20,12 @@ interface MenuDao {
     @Query("delete from menuentity")
     suspend fun deleteAll()
 
+    @Query("delete from menuentity where menuId = :id")
+    suspend fun delete(id: Int)
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertMenu(menu: MenuEntity)
+    suspend fun insert(menu: MenuEntity)
 
     @Update
-    suspend fun updateMenu(menu: MenuEntity)
+    suspend fun update(menu: MenuEntity)
 }

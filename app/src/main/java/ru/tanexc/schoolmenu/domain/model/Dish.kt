@@ -9,7 +9,7 @@ import ru.tanexc.schoolmenu.data.local.entity.main.DishEntity
  * Модель блюда
  */
 data class Dish(
-    val id: Long,
+    val id: Int,
     val title: String,
     val image: ImageBitmap,
     val calories: Float,

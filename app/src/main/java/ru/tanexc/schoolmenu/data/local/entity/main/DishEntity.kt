@@ -10,7 +10,7 @@ import ru.tanexc.schoolmenu.domain.model.Harm
 @Entity
 data class DishEntity(
     @PrimaryKey
-    val dishId: Long,
+    val dishId: Int,
     val title: String,
     val image: ByteArray,
     val calories: Float,

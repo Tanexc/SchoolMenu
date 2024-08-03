@@ -20,7 +20,7 @@ import ru.tanexc.schoolmenu.data.local.entity.main.MealEntity
     ]
 )
 data class MealDish(
-    val id: Int,
+    val id: Int = 0,
     val mealId: Int,
     val dishId: Int
 )

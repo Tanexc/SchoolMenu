@@ -3,12 +3,13 @@ package ru.tanexc.schoolmenu.domain.model
 import androidx.room.Entity
 import ru.tanexc.schoolmenu.data.local.entity.DataEntity
 import ru.tanexc.schoolmenu.data.local.entity.main.MealEntity
+import ru.tanexc.schoolmenu.data.local.entity.supportive.MealDish
 
 /**
  * Модель приема пищи
  */
 data class Meal(
-    val id: Long,
+    val id: Int,
     val dishes: List<Dish>,
     val type: MealType,
     val cost: Float
@@ -18,4 +19,6 @@ data class Meal(
         type,
         cost
     )
+
+    fun getMealDish(): List<MealDish> = dishes.map { MealDish(mealId = id, dishId = it.id) }
 }

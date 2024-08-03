@@ -22,7 +22,7 @@ import ru.tanexc.schoolmenu.data.local.entity.main.MenuEntity
 )
 data class MenuMeal(
     @PrimaryKey
-    val id: Int,
+    val id: Int = 0,
     val menuId: Int,
     val mealId: Int
 )
