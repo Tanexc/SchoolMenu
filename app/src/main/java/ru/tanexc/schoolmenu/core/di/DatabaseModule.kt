@@ -18,7 +18,7 @@ import ru.tanexc.schoolmenu.domain.repository.MealRepository
 import ru.tanexc.schoolmenu.domain.repository.MenuRepository
 import ru.tanexc.schoolmenu.data.repository.MenuRepositoryImpl
 
-val database = module {
+val databaseModule = module {
     single<MainDatabase> {
         Room.databaseBuilder(
             context = androidApplication().applicationContext,

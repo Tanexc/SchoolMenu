@@ -16,4 +16,8 @@
     <string name="deleteTitle">Удаление блюда</string>
     <string name="deleteText">Вы действительно хотите удалить это блюдо?</string>
     <string name="choice">Выбрать изображение</string>
+    <string name="menu">Меню</string>
+    <string name="objective">Калории</string>
+    <string name="dish">Блюда</string>
+    <string name="title">Название</string>
 </resources>

@@ -35,6 +35,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -49,7 +50,20 @@ import ru.tanexc.schoolmenu.presentation.ui.widgets.SegmentedButtonBox
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EditDishScreen(dish: Dish, onClose: () -> Unit, onSubmit: (Dish) -> Unit) {
+fun EditDishScreen(dish: Dish = Dish(
+    0,
+    "",
+    ImageBitmap(1, 1),
+    0f,
+    0f,
+    0f,0f,
+    0f,
+    Harm.NotSpecified,
+    0f,
+
+
+
+), onClose: () -> Unit, onSubmit: (Dish) -> Unit) {
     val context = LocalContext.current as MainActivity
     val image = remember { mutableStateOf(dish.image) }
     val calories = remember { mutableStateOf(dish.calories.toString()) }
@@ -59,6 +73,7 @@ fun EditDishScreen(dish: Dish, onClose: () -> Unit, onSubmit: (Dish) -> Unit) {
     val weight = remember { mutableStateOf(dish.weight.toString()) }
     val harm = remember { mutableStateOf(dish.harm) }
     val cost = remember { mutableStateOf(dish.cost.toString()) }
+    val title = remember { mutableStateOf(dish.title) }
     val picker =
         rememberLauncherForActivityResult(contract = ActivityResultContracts.PickVisualMedia()) { uri ->
             uri?.let {
@@ -89,6 +104,7 @@ fun EditDishScreen(dish: Dish, onClose: () -> Unit, onSubmit: (Dish) -> Unit) {
                         onSubmit(
                             dish.copy(
                                 image = image.value,
+                                title = title.value,
                                 calories = calories.value.toFloatOrNull() ?: 0f,
                                 protein = protein.value.toFloatOrNull() ?: 0f,
                                 fats = fats.value.toFloatOrNull() ?: 0f,
@@ -111,6 +127,20 @@ fun EditDishScreen(dish: Dish, onClose: () -> Unit, onSubmit: (Dish) -> Unit) {
                 .padding(paddingValues)
                 .fillMaxWidth()
         ) {
+            item {
+                OutlinedTextField(
+                    value = title.value,
+                    onValueChange = {
+                        title.value = it
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp, 8.dp),
+                    label = { Text(stringResource(R.string.title)) },
+                    placeholder = { Text(stringResource(R.string.title)) },
+
+                )
+            }
             item {
                 Row(
                     Modifier

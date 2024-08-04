@@ -66,6 +66,9 @@ dependencies {
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.activity)
 
+    // Serialization kotlinx
+    implementation(libs.kotlinx.serialization.json)
+
     // koin
     implementation(libs.koin.android)
 
@@ -83,5 +86,9 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     annotationProcessor(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
+
+    // navigation
+    implementation(libs.androidx.navigation.compose)
 
 }

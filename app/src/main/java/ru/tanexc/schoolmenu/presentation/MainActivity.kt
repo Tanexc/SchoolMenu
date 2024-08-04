@@ -11,6 +11,7 @@ import androidx.compose.ui.res.imageResource
 import ru.tanexc.schoolmenu.R
 import ru.tanexc.schoolmenu.domain.model.Dish
 import ru.tanexc.schoolmenu.domain.model.Harm
+import ru.tanexc.schoolmenu.presentation.screen.MainScreen
 import ru.tanexc.schoolmenu.presentation.screen.dish.components.EditDishScreen
 import ru.tanexc.schoolmenu.presentation.ui.theme.SchoolMenuTheme
 
@@ -20,22 +21,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SchoolMenuTheme {
-                EditDishScreen(
-                    dish = Dish(
-                        1,
-                        "wecsdcsdc",
-                        ImageBitmap(1, 1),
-                        1.5f,
-                        1.5f,
-                        1.5f,
-                        1.5f,
-                        1.5f,
-                        Harm.NotSpecified,
-                        1.5f,
-
-                    ),
-                    onClose = {},
-                    onSubmit = {})
+                MainScreen()
             }
         }
     }

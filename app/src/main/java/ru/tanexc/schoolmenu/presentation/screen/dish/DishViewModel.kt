@@ -1,5 +1,6 @@
 package ru.tanexc.schoolmenu.presentation.screen.dish
 
+import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -52,6 +53,29 @@ class DishViewModel(
 
     fun selectDish(dish: Dish?) {
         _selectedDish.value = dish
+    }
+
+    fun createDish(dish: Dish) {
+        viewModelScope.launch(Dispatchers.IO) {
+            dishRepository.insertDish(dish).collect { state ->
+                when (state) {
+                    is DataState.Success -> {
+                        _uiState.value = UIState.Success
+                        _selectedDish.value = dish
+                    }
+
+                    is DataState.Loading -> {
+                        _uiState.value = UIState.Loading
+                    }
+
+                    is DataState.Error -> {
+                        _uiState.value = UIState.Error(state.message)
+                        Log.i("cum", state.message)
+                        _selectedDish.value = null
+                    }
+                }
+            }
+        }
     }
 
     fun updateSearch(searchString: String) {
@@ -127,7 +151,7 @@ class DishViewModel(
             dishRepository.getAllDishes(pg).collect { state ->
                 when (state) {
                     is DataState.Success -> {
-                        _data.value = state.data
+                        _data.value += state.data
                         _uiState.value = UIState.Success
                     }
 
