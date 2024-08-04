@@ -10,7 +10,7 @@ import ru.tanexc.schoolmenu.domain.model.Menu
 
 @Entity
 class MenuEntity(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val menuId: Int,
     val dayOfWeek: DayOfWeek = DayOfWeek.Any,
 ): DataEntity {

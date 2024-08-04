@@ -9,7 +9,7 @@ import ru.tanexc.schoolmenu.domain.model.MealType
 
 @Entity
 data class MealEntity(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val mealId: Int,
     val type: MealType,
     val cost: Float

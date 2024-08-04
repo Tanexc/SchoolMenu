@@ -9,7 +9,7 @@ import ru.tanexc.schoolmenu.domain.model.Harm
 
 @Entity
 data class DishEntity(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val dishId: Int,
     val title: String,
     val image: ByteArray,
