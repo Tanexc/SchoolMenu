@@ -13,9 +13,9 @@ import ru.tanexc.schoolmenu.data.local.dao.MenuDao
 import ru.tanexc.schoolmenu.data.local.dao.MenuMealDao
 import ru.tanexc.schoolmenu.data.repository.DishRepositoryImpl
 import ru.tanexc.schoolmenu.data.repository.MealRepositoryImpl
-import ru.tanexc.schoolmenu.data.repository.DishRepository
-import ru.tanexc.schoolmenu.data.repository.MealRepository
-import ru.tanexc.schoolmenu.data.repository.MenuRepository
+import ru.tanexc.schoolmenu.domain.repository.DishRepository
+import ru.tanexc.schoolmenu.domain.repository.MealRepository
+import ru.tanexc.schoolmenu.domain.repository.MenuRepository
 import ru.tanexc.schoolmenu.data.repository.MenuRepositoryImpl
 
 val database = module {
