@@ -8,7 +8,7 @@ import ru.tanexc.schoolmenu.data.local.dao.MealDishDao
 import ru.tanexc.schoolmenu.data.local.dao.MenuMealDao
 import ru.tanexc.schoolmenu.domain.model.Meal
 import ru.tanexc.schoolmenu.domain.model.MealType
-import ru.tanexc.schoolmenu.data.repository.MealRepository
+import ru.tanexc.schoolmenu.domain.repository.MealRepository
 
 class MealRepositoryImpl(
     private val mealDao: MealDao,

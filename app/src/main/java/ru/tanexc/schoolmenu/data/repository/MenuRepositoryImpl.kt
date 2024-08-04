@@ -7,6 +7,7 @@ import ru.tanexc.schoolmenu.data.local.dao.MenuDao
 import ru.tanexc.schoolmenu.data.local.dao.MenuMealDao
 import ru.tanexc.schoolmenu.domain.model.DayOfWeek
 import ru.tanexc.schoolmenu.domain.model.Menu
+import ru.tanexc.schoolmenu.domain.repository.MenuRepository
 
 class MenuRepositoryImpl(
     private val menuDao: MenuDao,

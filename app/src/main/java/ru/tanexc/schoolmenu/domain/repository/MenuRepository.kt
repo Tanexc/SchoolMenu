@@ -1,8 +1,7 @@
-package ru.tanexc.schoolmenu.data.repository
+package ru.tanexc.schoolmenu.domain.repository
 
 import kotlinx.coroutines.flow.Flow
 import ru.tanexc.schoolmenu.core.util.DataState
-import ru.tanexc.schoolmenu.data.local.entity.main.MenuEntity
 import ru.tanexc.schoolmenu.domain.model.DayOfWeek
 import ru.tanexc.schoolmenu.domain.model.Menu
 

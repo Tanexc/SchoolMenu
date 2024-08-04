@@ -1,4 +1,4 @@
-package ru.tanexc.schoolmenu.data.repository
+package ru.tanexc.schoolmenu.domain.repository
 
 import kotlinx.coroutines.flow.Flow
 import ru.tanexc.schoolmenu.core.util.DataState

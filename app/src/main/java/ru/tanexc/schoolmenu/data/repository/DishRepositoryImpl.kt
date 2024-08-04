@@ -6,7 +6,7 @@ import ru.tanexc.schoolmenu.core.util.DataState
 import ru.tanexc.schoolmenu.data.local.dao.DishDao
 import ru.tanexc.schoolmenu.data.local.dao.MealDishDao
 import ru.tanexc.schoolmenu.domain.model.Dish
-import ru.tanexc.schoolmenu.data.repository.DishRepository
+import ru.tanexc.schoolmenu.domain.repository.DishRepository
 
 class DishRepositoryImpl(
     private val dishDao: DishDao,

@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">SchoolMenu</string>
+    <string name="dishlist">Блюда</string>
+    <string name="harm">Полезность</string>
+    <string name="protein">Белки</string>
+    <string name="fats">Жиры</string>
+    <string name="carbon">Углеводы</string>
+    <string name="calories">Калории</string>
+    <string name="ccal">ккал</string>
+    <string name="gr">гр</string>
+    <string name="cancel">Отмена</string>
+    <string name="update">Сохранить</string>
+    <string name="cost">Цена</string>
+    <string name="weight">Вес</string>
+    <string name="rub">₽</string>
+    <string name="deleteTitle">Удаление блюда</string>
+    <string name="deleteText">Вы действительно хотите удалить это блюдо?</string>
+    <string name="choice">Выбрать изображение</string>
 </resources>
