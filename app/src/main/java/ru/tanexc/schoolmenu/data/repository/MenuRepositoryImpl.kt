@@ -77,4 +77,24 @@ class MenuRepositoryImpl(
             emit(DataState.Error(e.message?: "error: MenuRepository::update"))
         }
     }
+
+    override fun getMenuForWeek(): Flow<DataState<List<Menu>>> = flow {
+        emit(DataState.Loading)
+        try {
+            val data = menuDao.getMenuForWeek().map {it.asDomain()}
+            emit(DataState.Success(data))
+        } catch (e: Exception) {
+            emit(DataState.Error(e.message?: "error: MenuRepository::getMenuForWeek"))
+        }
+    }
+
+    override fun setMenuForWeek(day: Int, menuId: Int): Flow<DataState<Unit>> = flow {
+        emit(DataState.Loading)
+        try {
+            menuDao.setMenuForWeek(day, menuId)
+            emit(DataState.Success(Unit))
+        } catch (e: Exception) {
+            emit(DataState.Error(e.message?: "error: MenuRepository::getMenuForWeek"))
+        }
+    }
 }

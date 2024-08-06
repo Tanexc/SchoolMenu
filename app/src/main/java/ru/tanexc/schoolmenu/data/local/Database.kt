@@ -11,10 +11,11 @@ import ru.tanexc.schoolmenu.data.local.entity.main.DishEntity
 import ru.tanexc.schoolmenu.data.local.entity.main.MealEntity
 import ru.tanexc.schoolmenu.data.local.entity.main.MenuEntity
 import ru.tanexc.schoolmenu.data.local.entity.supportive.MealDish
+import ru.tanexc.schoolmenu.data.local.entity.supportive.MenuForWeek
 import ru.tanexc.schoolmenu.data.local.entity.supportive.MenuMeal
 
 @Database(
-    entities = [DishEntity::class, MealEntity::class, MenuEntity::class, MenuMeal::class, MealDish::class],
+    entities = [DishEntity::class, MealEntity::class, MenuEntity::class, MenuMeal::class, MealDish::class, MenuForWeek::class],
     exportSchema = false,
     version = 1,
 )

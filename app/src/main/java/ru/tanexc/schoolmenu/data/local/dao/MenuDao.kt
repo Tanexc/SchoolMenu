@@ -5,8 +5,10 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import ru.tanexc.schoolmenu.data.local.entity.extended.MenuForWeekWithMenu
 import ru.tanexc.schoolmenu.data.local.entity.extended.MenuWithMeal
 import ru.tanexc.schoolmenu.data.local.entity.main.MenuEntity
+import ru.tanexc.schoolmenu.data.local.entity.supportive.MenuForWeek
 import ru.tanexc.schoolmenu.domain.model.DayOfWeek
 
 @Dao
@@ -16,6 +18,12 @@ interface MenuDao {
 
     @Query("select * from menuentity where menuentity.dayOfWeek = :day")
     suspend fun getMenuByDay(day: DayOfWeek): List<MenuWithMeal>
+
+    @Query("replace into menuforweek (id, menuId) values (:day, :menuId)")
+    suspend fun setMenuForWeek(day: Int, menuId: Int)
+
+    @Query("select * from menuforweek")
+    suspend fun getMenuForWeek(): List<MenuForWeekWithMenu>
 
     @Query("delete from menuentity")
     suspend fun deleteAll()

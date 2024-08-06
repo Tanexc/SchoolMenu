@@ -17,4 +17,8 @@ interface MenuRepository {
     fun insert(menu: Menu): Flow<DataState<Unit>>
 
     fun update(menu: Menu): Flow<DataState<Unit>>
+
+    fun getMenuForWeek(): Flow<DataState<List<Menu>>>
+
+    fun setMenuForWeek(day: Int, menuId: Int): Flow<DataState<Unit>>
 }
