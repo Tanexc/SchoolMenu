@@ -20,4 +20,7 @@
     <string name="objective">Калории</string>
     <string name="dish">Блюда</string>
     <string name="title">Название</string>
+    <string name="select">Выбрать</string>
+    <string name="selectmenu">Выберите меню из списка</string>
+    <string name="cost_by_dishes">Указывать цену, рассчитанную на основе блюд</string>
 </resources>

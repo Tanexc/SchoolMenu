@@ -14,6 +14,16 @@ data class Meal(
     val type: MealType,
     val cost: Float
 ): Domain {
+
+    companion object {
+        fun default(
+            id: Int = 0,
+            dishes: List<Dish> = emptyList(),
+            type: MealType = MealType.Other,
+            cost: Float = 0f
+        ) = Meal(id, dishes, type, cost)
+    }
+
     override fun asEntity(): MealEntity = MealEntity(
         id,
         type,
