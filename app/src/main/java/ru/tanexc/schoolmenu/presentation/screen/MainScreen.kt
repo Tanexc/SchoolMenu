@@ -13,6 +13,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -26,6 +27,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import ru.tanexc.schoolmenu.R
 import ru.tanexc.schoolmenu.presentation.screen.dish.DishScreen
+import ru.tanexc.schoolmenu.presentation.screen.menu.MenuScreen
 import ru.tanexc.schoolmenu.presentation.util.Screen
 
 @Composable
@@ -87,26 +89,29 @@ fun MainScreen() {
                 )
             }
         }) { padding ->
+        Surface {
+            NavHost(
+                navController,
+                Screen.DishList,
+                enterTransition = { fadeIn(animationSpec = tween(200)) },
+                exitTransition = { fadeOut(animationSpec = tween(200)) }
+            ) {
+                composable<Screen.DishList> {
+                    DishScreen(modifier = Modifier
+                        .fillMaxSize()
+                        .padding(0.dp, 0.dp, 0.dp, padding.calculateBottomPadding()))
+                }
 
-        NavHost(
-            navController,
-            Screen.DishList,
-            Modifier.padding(0.dp, 0.dp, 0.dp, padding.calculateBottomPadding()),
-            enterTransition = { fadeIn(animationSpec = tween(200)) },
-            exitTransition = { fadeOut(animationSpec = tween(200)) }
-        ) {
-            composable<Screen.DishList> {
-                DishScreen(modifier = Modifier.fillMaxSize())
-            }
+                composable<Screen.Menu> {
+                    MenuScreen(modifier = Modifier
+                        .fillMaxSize()
+                        .padding(0.dp, 0.dp, 0.dp, padding.calculateBottomPadding()), topPadding = padding.calculateTopPadding())
+                }
 
-            composable<Screen.Menu> {
+                composable<Screen.Objective> {
 
-            }
-
-            composable<Screen.Objective> {
-
+                }
             }
         }
-
     }
 }

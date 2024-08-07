@@ -9,11 +9,12 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import ru.tanexc.schoolmenu.core.util.DataState
 import ru.tanexc.schoolmenu.core.util.UIState
-import ru.tanexc.schoolmenu.domain.repository.DishRepository
 import ru.tanexc.schoolmenu.domain.model.Dish
+import ru.tanexc.schoolmenu.domain.repository.DishRepository
 
 class DishViewModel(
     private val dishRepository: DishRepository
@@ -62,6 +63,7 @@ class DishViewModel(
                     is DataState.Success -> {
                         _uiState.value = UIState.Success
                         _selectedDish.value = dish
+                        _data.value += dish
                     }
 
                     is DataState.Loading -> {
@@ -70,7 +72,6 @@ class DishViewModel(
 
                     is DataState.Error -> {
                         _uiState.value = UIState.Error(state.message)
-                        Log.i("cum", state.message)
                         _selectedDish.value = null
                     }
                 }
@@ -141,13 +142,14 @@ class DishViewModel(
     fun closeSearch() {
         _searchMode.value = false
         _search.value = ""
-        viewModelScope.launch(Dispatchers.Main) {
-            page.emit(0)
-        }
+        _data.value = emptyList()
+        _uiState.value = UIState.Loading
+        page.value = -1
     }
 
     private suspend fun collectPage() {
-        page.collect { pg ->
+        page.collectLatest { pg ->
+            if (page.value < 0) page.value = 0
             dishRepository.getAllDishes(pg).collect { state ->
                 when (state) {
                     is DataState.Success -> {

@@ -34,6 +34,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
@@ -48,7 +49,6 @@ import ru.tanexc.schoolmenu.domain.model.Harm
 import ru.tanexc.schoolmenu.presentation.MainActivity
 import ru.tanexc.schoolmenu.presentation.ui.widgets.SegmentedButtonBox
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditDishScreen(dish: Dish = Dish(
     0,
@@ -63,8 +63,8 @@ fun EditDishScreen(dish: Dish = Dish(
 
 
 
-), onClose: () -> Unit, onSubmit: (Dish) -> Unit) {
-    val context = LocalContext.current as MainActivity
+), onClose: () -> Unit, onSubmit: (Dish) -> Unit, onFocus: () -> Unit) {
+    val context = LocalContext.current
     val image = remember { mutableStateOf(dish.image) }
     val calories = remember { mutableStateOf(dish.calories.toString()) }
     val protein = remember { mutableStateOf(dish.protein.toString()) }
@@ -135,7 +135,8 @@ fun EditDishScreen(dish: Dish = Dish(
                     },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(16.dp, 8.dp),
+                        .padding(16.dp, 8.dp)
+                        .onFocusEvent { onFocus() },
                     label = { Text(stringResource(R.string.title)) },
                     placeholder = { Text(stringResource(R.string.title)) },
 

@@ -12,8 +12,11 @@ room = "2.6.1"
 coil = "2.7.0"
 koin = "4.0.0-RC1"
 ktor = "2.3.12"
-dynamictheme="1.0.3"
+dynamictheme = "1.0.3"
 kotlinxSerializationJson = "1.6.3"
+compose = "1.7.0-beta06"
+md3 = "1.3.0-beta05"
+
 
 [libraries]
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityCompose" }
@@ -24,10 +27,10 @@ androidx-navigation-compose = { module = "androidx.navigation:navigation-compose
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
-androidx-ui = { group = "androidx.compose.ui", name = "ui" }
-androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
-androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose"}
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics", version.ref = "compose"}
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "compose"}
+androidx-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "md3" }
 
 # room
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
@@ -45,7 +48,7 @@ koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 
 # dynamic theme by t8rin
-t8rin-dynamictheme = { group = "com.github.t8rin", name="dynamictheme", version.ref="dynamictheme" }
+t8rin-dynamictheme = { group = "com.github.t8rin", name = "dynamictheme", version.ref = "dynamictheme" }
 
 # serialization
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
@@ -55,7 +58,7 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-jetbrains-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref="kotlin" }
+jetbrains-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 

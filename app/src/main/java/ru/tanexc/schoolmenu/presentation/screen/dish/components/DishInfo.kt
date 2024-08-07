@@ -3,6 +3,7 @@ package ru.tanexc.schoolmenu.presentation.screen.dish.components
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -63,10 +65,10 @@ fun DishInfo(
         else sheetState.hide()
     }
 
-    Column{
+    Column(Modifier.fillMaxSize()){
         CenterAlignedTopAppBar(
             title = {
-                Text(currentDish.value.title, fontWeight = FontWeight.Bold)
+                Text(currentDish.value.title, fontWeight = FontWeight.Bold, maxLines = 1, modifier = Modifier.basicMarquee())
             },
             navigationIcon = {
                 IconButton(
@@ -102,7 +104,6 @@ fun DishInfo(
                 Column(
                     Modifier
                         .fillMaxWidth()
-                        .padding(8.dp, 0.dp)
                         .background(
                             MaterialTheme.colorScheme.secondaryContainer.copy(0.8f),
                             RoundedCornerShape(22.dp)
@@ -131,7 +132,7 @@ fun DishInfo(
                 Box(
                     Modifier
                         .fillMaxWidth()
-                        .padding(8.dp, 4.dp)
+                        .padding(0.dp, 4.dp)
                         .background(
                             MaterialTheme.colorScheme.secondaryContainer.copy(0.8f),
                             RoundedCornerShape(22.dp)
@@ -161,7 +162,6 @@ fun DishInfo(
                 Column(
                     Modifier
                         .fillMaxWidth()
-                        .padding(8.dp, 0.dp)
                         .background(
                             MaterialTheme.colorScheme.secondaryContainer.copy(0.8f),
                             RoundedCornerShape(22.dp)
@@ -176,7 +176,14 @@ fun DishInfo(
                         Text(stringResource(R.string.cost), fontWeight = FontWeight.Bold)
                         Text("${currentDish.value.cost} " + stringResource(R.string.rub))
                     }
-                    Spacer(modifier = Modifier.fillMaxWidth().padding(22.dp, 0.dp).height(0.75.dp).background(MaterialTheme.colorScheme.outline.copy(0.4f), RoundedCornerShape(50)))
+                    Spacer(modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(22.dp, 0.dp)
+                        .height(0.75.dp)
+                        .background(
+                            MaterialTheme.colorScheme.outline.copy(0.4f),
+                            RoundedCornerShape(50)
+                        ))
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier
@@ -191,10 +198,10 @@ fun DishInfo(
             }
 
             item {
+                Spacer(modifier = Modifier.size(4.dp))
                 Column(
                     Modifier
                         .fillMaxWidth()
-                        .padding(8.dp, 4.dp)
                         .background(
                             MaterialTheme.colorScheme.secondaryContainer.copy(0.8f),
                             RoundedCornerShape(22.dp)
@@ -209,7 +216,14 @@ fun DishInfo(
                         Text(stringResource(R.string.protein), fontWeight = FontWeight.Bold)
                         Text("${currentDish.value.protein} " + stringResource(R.string.gr))
                     }
-                    Spacer(modifier = Modifier.fillMaxWidth().padding(22.dp, 0.dp).height(0.75.dp).background(MaterialTheme.colorScheme.outline.copy(0.4f), RoundedCornerShape(50)))
+                    Spacer(modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(22.dp, 0.dp)
+                        .height(0.75.dp)
+                        .background(
+                            MaterialTheme.colorScheme.outline.copy(0.4f),
+                            RoundedCornerShape(50)
+                        ))
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier
@@ -219,7 +233,14 @@ fun DishInfo(
                         Text(stringResource(R.string.fats), fontWeight = FontWeight.Bold)
                         Text("${currentDish.value.fats} " + stringResource(R.string.gr))
                     }
-                    Spacer(modifier = Modifier.fillMaxWidth().padding(22.dp, 0.dp).height(0.75.dp).background(MaterialTheme.colorScheme.outline.copy(0.4f), RoundedCornerShape(50)))
+                    Spacer(modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(22.dp, 0.dp)
+                        .height(0.75.dp)
+                        .background(
+                            MaterialTheme.colorScheme.outline.copy(0.4f),
+                            RoundedCornerShape(50)
+                        ))
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier
@@ -229,7 +250,14 @@ fun DishInfo(
                         Text(stringResource(R.string.carbon), fontWeight = FontWeight.Bold)
                         Text("${currentDish.value.carbon} " + stringResource(R.string.gr))
                     }
-                    Spacer(modifier = Modifier.fillMaxWidth().padding(22.dp, 0.dp).height(0.75.dp).background(MaterialTheme.colorScheme.outline.copy(0.4f), RoundedCornerShape(50)))
+                    Spacer(modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(22.dp, 0.dp)
+                        .height(0.75.dp)
+                        .background(
+                            MaterialTheme.colorScheme.outline.copy(0.4f),
+                            RoundedCornerShape(50)
+                        ))
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier
@@ -259,7 +287,8 @@ fun DishInfo(
                     sheetVisibility.value = false
                     viewModel.updateDish(it)
                     currentDish.value = it
-                }
+                },
+                onFocus = { sheetVisibility.value = true }
             )
         }
     }

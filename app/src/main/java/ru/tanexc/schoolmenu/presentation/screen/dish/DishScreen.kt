@@ -13,7 +13,7 @@ import ru.tanexc.schoolmenu.presentation.screen.dish.components.DishList
 fun DishScreen(modifier: Modifier) {
     val viewModel: DishViewModel by getKoin().inject()
 
-    Column(modifier.fillMaxSize()) {
+    Column(modifier) {
         when(val dish = viewModel.selectedDish) {
             is Dish -> DishInfo(viewModel, dish)
             else -> DishList(viewModel)

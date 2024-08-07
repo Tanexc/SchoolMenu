@@ -57,7 +57,7 @@ fun DishCard(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight()
-                .padding(16.dp, 8.dp),
+                .padding(0.dp, 8.dp, 16.dp, 0.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceBetween
         ) {
@@ -68,7 +68,7 @@ fun DishCard(
                 modifier = Modifier
                     .basicMarquee()
             )
-            Column {
+            Column(Modifier.padding(16.dp, 0.dp, 0.dp, 16.dp)) {
 
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,
