@@ -1,5 +1,6 @@
 package ru.tanexc.schoolmenu.presentation.screen.menu
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -12,17 +13,30 @@ import ru.tanexc.schoolmenu.presentation.screen.menu.components.WeekScreen
 @Composable
 fun MenuScreen(
     modifier: Modifier,
-    topPadding: Dp
+    topPadding: Dp,
+    changeBottomBar: (Boolean) -> Unit
 ) {
     val dayOfWeek = remember { mutableStateOf<DayOfWeek?>(null) }
-    when (val day = dayOfWeek.value) {
-        null -> WeekScreen(
-            modifier = modifier, topPadding = topPadding, onCreateMeal = { dayOfWeek.value = it })
 
-        else -> MenuCreateScreen(
-            onClose = { dayOfWeek.value = null },
-            dayOfWeek = day
-        )
+    BackHandler {
+        if (dayOfWeek.value != null) {
+            dayOfWeek.value = null
+        }
+    }
+
+    when (val day = dayOfWeek.value) {
+        null -> {
+
+            WeekScreen(
+                modifier = modifier, topPadding = topPadding, onCreateMeal = { dayOfWeek.value = it })
+        }
+
+        else -> {
+            MenuCreateScreen(
+                onClose = { dayOfWeek.value = null },
+                dayOfWeek = day
+            )
+        }
     }
 
 }

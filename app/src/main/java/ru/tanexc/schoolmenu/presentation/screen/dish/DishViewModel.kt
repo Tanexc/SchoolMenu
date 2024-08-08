@@ -62,8 +62,23 @@ class DishViewModel(
                 when (state) {
                     is DataState.Success -> {
                         _uiState.value = UIState.Success
-                        _selectedDish.value = dish
-                        _data.value += dish
+                        _data.value = emptyList()
+                        page.value = -1
+                        dishRepository.getByTitle(dish.title).collect { st ->
+                            when (st) {
+                                is DataState.Success -> {
+                                    _selectedDish.value = st.data.first()
+                                }
+
+                                is DataState.Loading -> {
+                                    _uiState.value = UIState.Loading
+                                }
+
+                                is DataState.Error -> {
+                                    _uiState.value = UIState.Error(st.message)
+                                }
+                            }
+                        }
                     }
 
                     is DataState.Loading -> {
@@ -107,6 +122,7 @@ class DishViewModel(
                 when (state) {
                     is DataState.Success -> {
                         _data.value = _data.value.map { if (it.id == dish.id) dish else it }
+                        _selectedDish.value = dish
                         _uiState.value = UIState.Success
                     }
 

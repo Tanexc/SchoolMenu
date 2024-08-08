@@ -47,7 +47,7 @@ fun DishCard(
         Image(
             dish.image,
             contentDescription = null,
-            contentScale = ContentScale.FillBounds,
+            contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxHeight()
                 .fillMaxWidth(0.4f)

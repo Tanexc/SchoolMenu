@@ -9,7 +9,16 @@ sealed class Screen {
     data object Menu: Screen()
 
     @Serializable
+    data object Week: Screen()
+
+    @Serializable
+    data object CreateMenu: Screen()
+
+    @Serializable
     data object DishList: Screen()
+
+    @Serializable
+    data object DishInfo: Screen()
 
     @Serializable
     data object Objective: Screen()

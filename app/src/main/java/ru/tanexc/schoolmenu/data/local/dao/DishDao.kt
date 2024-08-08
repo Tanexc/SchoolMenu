@@ -25,7 +25,7 @@ interface DishDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun insertDish(data: DishEntity)
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateDish(data: DishEntity)
 
 }

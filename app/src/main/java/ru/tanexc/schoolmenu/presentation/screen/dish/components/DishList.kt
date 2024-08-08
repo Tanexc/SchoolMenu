@@ -192,8 +192,8 @@ fun DishList(
                         bottomSheetVisibility.value = false
                     },
                     onSubmit = {
-                        bottomSheetVisibility.value = false
                         viewModel.createDish(it)
+                        bottomSheetVisibility.value = false
                     },
                     onFocus = { }
                 )

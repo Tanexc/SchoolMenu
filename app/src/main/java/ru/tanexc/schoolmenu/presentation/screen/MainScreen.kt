@@ -34,59 +34,66 @@ import ru.tanexc.schoolmenu.presentation.util.Screen
 fun MainScreen() {
     val navController = rememberNavController()
     val selected: MutableState<Screen> = remember { mutableStateOf(Screen.DishList) }
+    val bottomNavVisibility: MutableState<Boolean> = remember { mutableStateOf(true) }
+
     Scaffold(
         Modifier.fillMaxSize(),
         bottomBar = {
-            NavigationBar {
-                NavigationBarItem(
-                    selected = selected.value == Screen.Menu,
-                    onClick = {
-                        selected.value = Screen.Menu
-                        navController.navigate(Screen.Menu)
-                    },
-                    icon = {
-                        Icon(
-                            Icons.AutoMirrored.Outlined.Article,
-                            null
-                        )
-                    },
-                    label = { Text(stringResource(R.string.menu)) },
-                    alwaysShowLabel = false
-                )
+            if (bottomNavVisibility.value) {
+                NavigationBar {
+                    NavigationBarItem(
+                        selected = selected.value == Screen.Menu,
+                        onClick = {
+                            selected.value = Screen.Menu
+                            navController.popBackStack()
+                            navController.navigate(Screen.Menu)
+                        },
+                        icon = {
+                            Icon(
+                                Icons.AutoMirrored.Outlined.Article,
+                                null
+                            )
+                        },
+                        label = { Text(stringResource(R.string.menu)) },
+                        alwaysShowLabel = false
+                    )
 
 
-                NavigationBarItem(
-                    selected = selected.value == Screen.DishList,
-                    onClick = {
-                        selected.value = Screen.DishList
-                        navController.navigate(Screen.DishList)
-                    },
-                    icon = {
-                        Icon(
-                            Icons.Outlined.Restaurant,
-                            null
-                        )
-                    },
-                    label = { Text(stringResource(R.string.dish)) },
-                    alwaysShowLabel = false
-                )
+                    NavigationBarItem(
+                        selected = selected.value == Screen.DishList,
+                        onClick = {
+                            selected.value = Screen.DishList
+                            navController.popBackStack()
+                            navController.navigate(Screen.DishList)
+                        },
+                        icon = {
+                            Icon(
+                                Icons.Outlined.Restaurant,
+                                null
+                            )
+                        },
+                        label = { Text(stringResource(R.string.dish)) },
+                        alwaysShowLabel = false
+                    )
 
 
-                NavigationBarItem(
-                    selected = selected.value == Screen.Objective,
-                    onClick = {
-                        selected.value = Screen.Objective
-                        navController.navigate(Screen.Objective)
-                    },
-                    icon = {
-                        Icon(
-                            Icons.Outlined.CameraAlt,
-                            null
-                        )
-                    },
-                    label = { Text(stringResource(R.string.objective)) },
-                    alwaysShowLabel = false
-                )
+                    NavigationBarItem(
+                        selected = selected.value == Screen.Objective,
+                        onClick = {
+                            selected.value = Screen.Objective
+                            navController.popBackStack()
+                            navController.navigate(Screen.Objective)
+                        },
+                        icon = {
+                            Icon(
+                                Icons.Outlined.CameraAlt,
+                                null
+                            )
+                        },
+                        label = { Text(stringResource(R.string.objective)) },
+                        alwaysShowLabel = false
+                    )
+                }
             }
         }) { padding ->
         Surface {
@@ -97,15 +104,20 @@ fun MainScreen() {
                 exitTransition = { fadeOut(animationSpec = tween(200)) }
             ) {
                 composable<Screen.DishList> {
-                    DishScreen(modifier = Modifier
-                        .fillMaxSize()
-                        .padding(0.dp, 0.dp, 0.dp, padding.calculateBottomPadding()))
+                    DishScreen(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(0.dp, 0.dp, 0.dp, padding.calculateBottomPadding())
+                    ) { bottomNavVisibility.value = it }
                 }
 
                 composable<Screen.Menu> {
-                    MenuScreen(modifier = Modifier
-                        .fillMaxSize()
-                        .padding(0.dp, 0.dp, 0.dp, padding.calculateBottomPadding()), topPadding = padding.calculateTopPadding())
+                    MenuScreen(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(0.dp, 0.dp, 0.dp, padding.calculateBottomPadding()),
+                        topPadding = padding.calculateTopPadding()
+                    ) { bottomNavVisibility.value = it }
                 }
 
                 composable<Screen.Objective> {

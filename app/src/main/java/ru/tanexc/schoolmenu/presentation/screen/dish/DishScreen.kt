@@ -1,5 +1,6 @@
 package ru.tanexc.schoolmenu.presentation.screen.dish
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -10,13 +11,30 @@ import ru.tanexc.schoolmenu.presentation.screen.dish.components.DishInfo
 import ru.tanexc.schoolmenu.presentation.screen.dish.components.DishList
 
 @Composable
-fun DishScreen(modifier: Modifier) {
+fun DishScreen(
+    modifier: Modifier,
+    changeBottomBar: (Boolean) -> Unit
+) {
     val viewModel: DishViewModel by getKoin().inject()
+    BackHandler {
+        if (viewModel.selectedDish != null) {
+            viewModel.selectDish(null)
+        }
+    }
 
-    Column(modifier) {
-        when(val dish = viewModel.selectedDish) {
-            is Dish -> DishInfo(viewModel, dish)
-            else -> DishList(viewModel)
+    when (val dish = viewModel.selectedDish) {
+        is Dish -> {
+            changeBottomBar(false)
+            Column(modifier.fillMaxSize()) {
+                DishInfo(viewModel, dish)
+            }
+        }
+
+        else -> {
+            changeBottomBar(true)
+            Column(modifier) {
+                DishList(viewModel)
+            }
         }
     }
 }

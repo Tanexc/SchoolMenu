@@ -36,18 +36,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.tanexc.schoolmenu.R
+import ru.tanexc.schoolmenu.core.MainApplication
 import ru.tanexc.schoolmenu.domain.model.Dish
+import ru.tanexc.schoolmenu.presentation.MainActivity
 import ru.tanexc.schoolmenu.presentation.screen.dish.DishViewModel
-import ru.tanexc.schoolmenu.presentation.screen.dish.components.EditDishScreen
-import ru.tanexc.schoolmenu.presentation.ui.theme.Typography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -65,10 +65,15 @@ fun DishInfo(
         else sheetState.hide()
     }
 
-    Column(Modifier.fillMaxSize()){
+    Column(Modifier.fillMaxSize()) {
         CenterAlignedTopAppBar(
             title = {
-                Text(currentDish.value.title, fontWeight = FontWeight.Bold, maxLines = 1, modifier = Modifier.basicMarquee())
+                Text(
+                    currentDish.value.title,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1,
+                    modifier = Modifier.basicMarquee()
+                )
             },
             navigationIcon = {
                 IconButton(
@@ -141,7 +146,8 @@ fun DishInfo(
                     Column(
                         Modifier
                             .fillMaxSize()
-                            .padding(22.dp)) {
+                            .padding(22.dp)
+                    ) {
                         Text(
                             stringResource(R.string.harm),
                             fontWeight = FontWeight.Bold,
@@ -176,14 +182,16 @@ fun DishInfo(
                         Text(stringResource(R.string.cost), fontWeight = FontWeight.Bold)
                         Text("${currentDish.value.cost} " + stringResource(R.string.rub))
                     }
-                    Spacer(modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(22.dp, 0.dp)
-                        .height(0.75.dp)
-                        .background(
-                            MaterialTheme.colorScheme.outline.copy(0.4f),
-                            RoundedCornerShape(50)
-                        ))
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(22.dp, 0.dp)
+                            .height(0.75.dp)
+                            .background(
+                                MaterialTheme.colorScheme.outline.copy(0.4f),
+                                RoundedCornerShape(50)
+                            )
+                    )
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier
@@ -216,14 +224,16 @@ fun DishInfo(
                         Text(stringResource(R.string.protein), fontWeight = FontWeight.Bold)
                         Text("${currentDish.value.protein} " + stringResource(R.string.gr))
                     }
-                    Spacer(modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(22.dp, 0.dp)
-                        .height(0.75.dp)
-                        .background(
-                            MaterialTheme.colorScheme.outline.copy(0.4f),
-                            RoundedCornerShape(50)
-                        ))
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(22.dp, 0.dp)
+                            .height(0.75.dp)
+                            .background(
+                                MaterialTheme.colorScheme.outline.copy(0.4f),
+                                RoundedCornerShape(50)
+                            )
+                    )
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier
@@ -233,14 +243,16 @@ fun DishInfo(
                         Text(stringResource(R.string.fats), fontWeight = FontWeight.Bold)
                         Text("${currentDish.value.fats} " + stringResource(R.string.gr))
                     }
-                    Spacer(modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(22.dp, 0.dp)
-                        .height(0.75.dp)
-                        .background(
-                            MaterialTheme.colorScheme.outline.copy(0.4f),
-                            RoundedCornerShape(50)
-                        ))
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(22.dp, 0.dp)
+                            .height(0.75.dp)
+                            .background(
+                                MaterialTheme.colorScheme.outline.copy(0.4f),
+                                RoundedCornerShape(50)
+                            )
+                    )
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier
@@ -250,14 +262,16 @@ fun DishInfo(
                         Text(stringResource(R.string.carbon), fontWeight = FontWeight.Bold)
                         Text("${currentDish.value.carbon} " + stringResource(R.string.gr))
                     }
-                    Spacer(modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(22.dp, 0.dp)
-                        .height(0.75.dp)
-                        .background(
-                            MaterialTheme.colorScheme.outline.copy(0.4f),
-                            RoundedCornerShape(50)
-                        ))
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(22.dp, 0.dp)
+                            .height(0.75.dp)
+                            .background(
+                                MaterialTheme.colorScheme.outline.copy(0.4f),
+                                RoundedCornerShape(50)
+                            )
+                    )
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier

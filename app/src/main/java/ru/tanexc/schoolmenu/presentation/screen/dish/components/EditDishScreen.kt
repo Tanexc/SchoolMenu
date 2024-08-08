@@ -50,7 +50,8 @@ import ru.tanexc.schoolmenu.presentation.MainActivity
 import ru.tanexc.schoolmenu.presentation.ui.widgets.SegmentedButtonBox
 
 @Composable
-fun EditDishScreen(dish: Dish = Dish(
+fun EditDishScreen(
+    dish: Dish = Dish(
     0,
     "",
     ImageBitmap(1, 1),
